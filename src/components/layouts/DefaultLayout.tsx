@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Layout } from "~/types/next-simpler";
 import { Container } from "~organisms/Container";
 
-const DefaultLayout: Layout = ({ children, PageComponent, pageProps }) => {
+const DefaultLayout: Layout = ({ children, router, pageProps }) => {
   const [value, setValue] = useState("input test - state in layout");
   return (
     <Container>
@@ -14,7 +14,7 @@ const DefaultLayout: Layout = ({ children, PageComponent, pageProps }) => {
       </Head>
       {children}
       <pre>
-        {PageComponent.name} {JSON.stringify(pageProps, undefined, 2)}
+        {router.asPath} {JSON.stringify(pageProps, undefined, 2)}
       </pre>
       <input type="text" value={value} onChange={(event) => setValue(event.target.value)} />
     </Container>

@@ -11,12 +11,7 @@ import type { PropsWithChildren, ReactElement } from "react";
 
 /* eslint-disable unicorn/prevent-abbreviations */
 
-export type Layout = NextPage<
-  PropsWithChildren & {
-    pageProps: AppProps["pageProps"];
-    PageComponent: AppProps["Component"];
-  }
->;
+export type Layout = NextPage<PropsWithChildren & AppProps>;
 
 type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   layout?: Layout;

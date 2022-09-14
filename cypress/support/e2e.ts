@@ -13,6 +13,4 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-process.env.NODE_ENV = "test";
-
 import "./commands.ts";
