@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "yarn cnv && next dev",
     "test": "jest --coverage",
-    "build": "yarn cnv && jest --ci --coverage && next build && yarn postbuild-e2e",
+    "build": "yarn cnv && NODE_ENV=test yarn test --ci && next build && yarn postbuild-e2e",
     "start": "yarn cnv && next start",
     "lint": "yarn cnv && next lint",
     "dev-e2e": "cypress run",
