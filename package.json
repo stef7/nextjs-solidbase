@@ -4,13 +4,13 @@
   "private": true,
   "packageManager": "yarn@3.2.3",
   "scripts": {
-    "dev": "yarn cnv && next dev",
+    "dev": "yarn cnv && next dev -p 3005",
     "test": "jest --coverage",
-    "build": "yarn cnv && yarn test --ci && next build && yarn postbuild-e2e",
+    "build": "yarn cnv && yarn test --ci && next build && echo DISABLED yarn postbuild-e2e",
     "start": "yarn cnv && next start",
     "lint": "yarn cnv && next lint",
     "dev-e2e": "cypress run",
-    "postbuild-e2e": "concurrently -k 'yarn:start -p 3005' 'wait-on -v http-get://127.0.0.1:3005 && yarn dev-e2e' -n next,cy -c magenta,cyan",
+    "postbuild-e2e": "concurrently -k 'yarn:start' 'wait-on -v http-get://localhost:3000 && cypress run' -n next,cy -c magenta,cyan",
     "cnv": "node ./scripts/check-node-version.js",
     "prepare": "husky install",
     "precommit": "lint-staged"
