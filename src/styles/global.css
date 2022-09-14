@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @import "nprogress/nprogress";
+  @import "./nprogress.css";
+}
+
+@layer base {
+  :root {
+    --contain-padding: 2rem;
+    --contain-width: 80rem;
+  }
+
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+  h4 {
+    @apply text-2xl;
+  }
+  h5 {
+    @apply text-xl;
+  }
+  h6 {
+    @apply text-lg;
+  }
+
+  .contain {
+    padding: var(--contain-padding) max(min(2vw, var(--contain-padding)), calc((50vw - var(--contain-width) / 2)));
+  }
+}

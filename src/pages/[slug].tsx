@@ -17,16 +17,13 @@ export const getStaticProps: PropsFn<{ _slug: string | undefined }, typeof getSt
 const SlugPage: Page<typeof getStaticProps> = ({ _slug }) => {
   return (
     <>
-      <h1>Slug: {_slug}</h1>
+      <h1 className="text-purple-600 text-opacity-50">Slug: {_slug}</h1>
       <p>
         <Link href="/">Home</Link>
       </p>
       <style jsx>{`
-        h1 {
-          color: #8800ffcc;
-        }
         :global(body) {
-          background: #ddddff66;
+          background: #ddddffcc;
         }
       `}</style>
     </>

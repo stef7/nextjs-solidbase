@@ -12,9 +12,16 @@ class AppDocument extends Document {
         <Head>
           {/* to be removed at go-live: */}
           <meta name="robots" content="noindex, nofollow" />
+
+          <link
+            href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
+
         <body>
           <Main />
+
           <NextScript />
         </body>
       </Html>

@@ -16,6 +16,18 @@ module.exports = {
 
   plugins: ["unicorn"],
 
+  rules: {
+    "unicorn/filename-case": [
+      "error",
+      {
+        cases: {
+          kebabCase: true,
+          pascalCase: true,
+        },
+      },
+    ],
+  },
+
   overrides: [
     {
       files: [".*rc.js"],

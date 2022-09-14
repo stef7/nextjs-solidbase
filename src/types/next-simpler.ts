@@ -7,10 +7,26 @@ import type {
   PreviewData,
 } from "next";
 import type { AppContext, AppInitialProps, AppProps } from "next/app";
-
-export type NextApp = NextComponentType<AppContext, AppInitialProps, AppProps>;
+import type { PropsWithChildren, ReactElement } from "react";
 
 /* eslint-disable unicorn/prevent-abbreviations */
+
+export type Layout = NextPage<
+  PropsWithChildren & {
+    pageProps: AppProps["pageProps"];
+    PageComponent: AppProps["Component"];
+  }
+>;
+
+type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  layout?: Layout;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export type NextApp = NextComponentType<AppContext, AppInitialProps, AppPropsWithLayout>;
 
 export type PathsFn<Params extends Record<string, string | string[] | undefined>> = GetStaticPaths<Params>;
 
@@ -26,6 +42,6 @@ export type PropsFn<
   PreviewD extends PreviewData = PreviewData,
 > = GetStaticProps<Props, PathsFn extends GetStaticPaths ? InferGetStaticPathsType<PathsFn> : never, PreviewD>;
 
-export type Page<PropsF extends PropsFn<StdProps, GetStaticPaths, PreviewData> | null = null> = NextPage<
+export type Page<PropsF extends PropsFn<StdProps, GetStaticPaths, PreviewData> | null = null> = NextPageWithLayout<
   PropsF extends null ? {} : InferGetStaticPropsType<PropsF>
 >;
