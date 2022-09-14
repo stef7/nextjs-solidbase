@@ -15,7 +15,13 @@ const customJestConfig = {
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
 
-  moduleNameMapper: { "~/(.*)": "<rootDir>/src/$1" },
+  moduleNameMapper: {
+    "~/(.*)": "<rootDir>/src/$1",
+    "~atoms/(.*)": "<rootDir>/src/components/atoms/$1",
+    "~molecules/(.*)": "<rootDir>/src/components/molecules/$1",
+    "~organisms/(.*)": "<rootDir>/src/components/organisms/$1",
+    "~layouts/(.*)": "<rootDir>/src/components/layouts/$1",
+  },
 
   collectCoverageFrom: ["src/**/*.(j|t)s(x|)"],
   coverageThreshold: {
