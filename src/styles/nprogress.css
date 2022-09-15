@@ -4,7 +4,8 @@
 }
 
 #nprogress .bar {
-  @apply bg-gradient-to-r from-green-600 via-yellow-600 to-current !important;
+  @apply bg-gradient-to-r from-green-600
+          via-yellow-600 to-current !important;
   height: 1em;
 }
 
@@ -18,7 +19,16 @@
   right: max(2em, calc(50vw - (var(--contain-width) / 2) - 8em));
 }
 
+
+
+
+
+
 #nprogress .spinner-icon {
+
+
+
+
   @apply text-current;
   width: 5em;
   height: 5em;
