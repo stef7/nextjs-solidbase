@@ -2,7 +2,7 @@
 module.exports = {
   root: true,
 
-  ignorePatterns: ["cypress/**/*", "**/*.config.js"],
+  ignorePatterns: ["**/*.config.js"],
 
   parserOptions: {
     ecmaVersion: "latest",

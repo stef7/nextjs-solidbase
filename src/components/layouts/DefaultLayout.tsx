@@ -3,7 +3,7 @@ import NProgress from "nprogress";
 import Router, { NextRouter } from "next/router";
 import { useState } from "react";
 import { Layout } from "~/types/next-simpler";
-import { Container } from "~organisms/Container";
+import { Container } from "~/components/organisms/Container";
 
 const DefaultLayout: Layout = ({ children, router, pageProps }) => {
   const [value, setValue] = useState("input test - state in layout");
@@ -14,7 +14,7 @@ const DefaultLayout: Layout = ({ children, router, pageProps }) => {
       </Head>
       {children}
       <pre>
-        {router.asPath} {JSON.stringify(pageProps, undefined, 2)}
+        {router.asPath} {JSON.stringify(pageProps)}
       </pre>
       <input type="text" value={value} onChange={(event) => setValue(event.target.value)} />
     </Container>
