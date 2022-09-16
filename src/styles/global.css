@@ -2,20 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
 @layer utilities {
   @import "nprogress/nprogress";
   @import "./nprogress.css";
 }
 
 @layer base {
-
-
-
-
   :root {
     --contain-padding: 2rem;
     --contain-width: 80rem;

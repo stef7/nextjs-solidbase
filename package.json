@@ -14,7 +14,7 @@
     "lint:fix": "yarn cnv && concurrently -n - -P 'yarn:lint-* {*}' -- --fix",
     "cnv": "node ./scripts/check-node-version.js",
     "prepare": "husky install",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged -v"
   },
   "dependencies": {
     "http-status-codes": "^2.2.0",
