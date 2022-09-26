@@ -1,15 +1,16 @@
 import { render, screen } from "@testing-library/react";
 
-import App from "~/pages/_app";
+import ThisApp from "~/pages/_app";
+import { PageProperties } from "~/types/next";
 
-describe(App.name, () => {
+describe(ThisApp.name, () => {
   it("renders", () => {
-    // eslint-disable-next-line unicorn/prevent-abbreviations
-    const pageProps: { text: string } = { text: "App text." };
-    const Component = ({ text }: typeof pageProps) => <div>{text}</div>;
+    // eslint-disable-next-line unicorn/prevent-abbreviations -- test
+    const pageProps: PageProperties<"pages"> = { entry: { __type: "pages", title: "Lorem ipsum" } };
+    const Component = ({ entry }: typeof pageProps) => <div>{entry.title}</div>;
 
-    render(<App {...{ pageProps, Component, router: {} as any }} />);
+    render(<ThisApp {...{ pageProps, Component, ...({} as any) }} />);
 
-    expect(screen.getByText("App text.")).toBeInTheDocument();
+    expect(screen.getByText("Lorem ipsum")).toBeInTheDocument();
   });
 });

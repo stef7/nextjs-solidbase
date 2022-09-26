@@ -1,33 +1,32 @@
-import Link from "next/link";
-import { Page, PathsFn, PropsFn } from "~/types/next-simpler";
+import { getContent, getFolderPaths, CmsContent } from "~/cms/content-api";
+import { Container } from "~/components/organisms/Container";
+import { PageBuilderModules } from "~/components/wrappers/PageBuilderModules";
+import { Page, PathsFn, PropsFn } from "~/types/next";
 
 export const getStaticPaths: PathsFn<{ slug: string }> = async () => {
   return {
-    paths: [{ params: { slug: "about" } }],
+    paths: getFolderPaths("pages").slugs.map(([slug]) => ({ params: { slug } })),
     fallback: "blocking",
   };
 };
 
-export const getStaticProps: PropsFn<{ _slug: string | undefined }, typeof getStaticPaths> = async ({ params }) => {
+export const getStaticProps: PropsFn<{ entry: CmsContent<"pages"> }, typeof getStaticPaths> = async ({ params }) => {
+  const entry = getContent("pages", params?.slug);
+  if (!entry) return { notFound: true };
   return {
-    props: { _slug: params?.slug },
+    props: { entry },
   };
 };
 
-const SlugPage: Page<typeof getStaticProps> = ({ _slug }) => {
+const PagesPage: Page<typeof getStaticProps> = ({ entry }) => {
   return (
     <>
-      <h1 className="text-purple-600 text-opacity-50">Slug: {_slug}</h1>
-      <p>
-        <Link href="/">Home</Link>
-      </p>
-      <style jsx>{`
-        :global(body) {
-          background: #ddddffcc;
-        }
-      `}</style>
+      <Container>
+        <h1 className="text-purple-600 text-opacity-50">{entry.title}</h1>
+      </Container>
+      <PageBuilderModules field={entry.PAGEBUILDER} />
     </>
   );
 };
 
-export default SlugPage;
+export default PagesPage;

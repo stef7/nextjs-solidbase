@@ -1,0 +1,29 @@
+.header {
+  @apply bg-indigo-100 py-6;
+}
+
+.logo {
+  @apply text-2xl mb-4;
+}
+
+.skipLinks {
+  a:not(:focus) {
+    @apply sr-only;
+  }
+}
+
+.navMain {
+  @apply mt-4;
+
+  ul {
+    @apply flex gap-6;
+  }
+}
+
+.main {
+  @apply flex-grow bg-sky-100;
+}
+
+.footer {
+  @apply bg-amber-100 py-4;
+}

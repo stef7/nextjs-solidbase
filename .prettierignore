@@ -2,3 +2,5 @@ node_modules
 .next
 yarn.lock
 .vercel
+**/types-generated.ts
+**/$path.ts

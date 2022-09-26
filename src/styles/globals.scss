@@ -1,0 +1,25 @@
+@layer base {
+  --contain-pad-y: 1.5rem;
+  --contain-pad-x: 3vw;
+  --contain-width: 80rem;
+  font-size: max(percentage(10 / 16), min(calc(0.45vw + percentage(9 / 16)), percentage(24 / 16)));
+
+  *,
+  ::before,
+  ::after {
+    box-decoration-break: clone;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* stylelint-disable-next-line selector-id-pattern */
+  #__next,
+  .frame-content {
+    @apply flex flex-col min-h-screen;
+  }
+}

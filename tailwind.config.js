@@ -1,20 +1,37 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   mode: "jit",
-  // These paths are just examples, replace them to match your project structure
-  content: ["./src/(components|pages)/**/*.(j|t)s(x|)"],
-
-  plugins: [],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
+    fontFamily: {
+      sans: ["Nunito Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+      mono: ["Menlo", "monospace"],
+    },
     extend: {
-      fontFamily: {
-        sans: ["Nunito Sans", ...defaultTheme.fontFamily.sans],
+      padding: {
+        container: "var(--contain-pad-y) max(var(--contain-pad-x), calc(50vw - (var(--contain-width) / 2)))",
+      },
+      margin: {
+        proseImgOffset: "calc(50% - max(50vw - var(--contain-pad-x), (var(--contain-width) / 2)))",
+      },
+      zIndex: {
+        containBg: "2",
+        aboveContainBg: "5",
       },
     },
   },
-  variants: {
-    extend: {},
+  variants: {},
+  corePlugins: {
+    container: false,
   },
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/line-clamp"),
+  ],
 };
+
+module.exports = config;

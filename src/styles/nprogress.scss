@@ -1,0 +1,30 @@
+@import "~nprogress/nprogress";
+
+#nprogress {
+  font-size: 0.3rem;
+  @apply text-red-600;
+
+  .bar {
+    height: 1em;
+    @apply bg-gradient-to-r from-green-600 via-yellow-600 to-current;
+  }
+
+  .peg {
+    @apply text-current;
+    box-shadow: 0 0 4em currentcolor, 0 0 2em currentcolor;
+  }
+
+  .spinner {
+    top: 4em;
+    right: #{"max(2em, calc(50vw - (var(--contain-width) / 2) - 8em))"};
+  }
+
+  .spinner-icon {
+    @apply text-current;
+    width: 5em;
+    height: 5em;
+    border-width: 1em;
+    border-top-color: currentcolor;
+    border-left-color: currentcolor;
+  }
+}

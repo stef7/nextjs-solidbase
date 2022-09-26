@@ -3,7 +3,7 @@
 const path = require("path");
 
 module.exports = {
-  "*.(j|t)s(x|)": (filenames) =>
+  "*.[jt]sx?": (filenames) =>
     `next lint --fix --file ${filenames.map((f) => path.relative(process.cwd(), f)).join(" --file ")}`,
-  "*.css": `stylelint --fix`,
+  "*.{css,css}": `stylelint --fix`,
 };

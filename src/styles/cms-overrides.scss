@@ -1,0 +1,58 @@
+@layer base {
+  // ensure CMS root appears first in case something renders within #__next (it shouldn't):
+  body {
+    @apply flex flex-col;
+  }
+
+  #nc-root {
+    @apply order-first min-h-screen max-h-screen;
+  }
+
+  // undo styles from tailwind base:
+  :where(&) {
+    line-height: revert;
+
+    blockquote,
+    dl,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    figure,
+    p,
+    pre {
+      margin: revert;
+    }
+  }
+}
+
+@layer utilities {
+  div[class*="-NestedObjectLabel "] {
+    @apply overflow-hidden p-2 pt-0 max-h-[5em] relative text-xs;
+
+    &::after {
+      content: "";
+      @apply block absolute h-[13px] inset-x-1 bottom-0 bg-gradient-to-b from-transparent to-[rgb(223,223,227)];
+    }
+  }
+
+  div[class*="-ListItem-listControlItem-listControlItemCollapsed-ListControl "]:first-child,
+  div[class*="-ListItem-listControlItem-ListControl "]:first-child,
+  div[class*="-ControlContainer "]:first-child {
+    @apply mt-2;
+  }
+
+  div[class*="-ListControl "] {
+    @apply -mx-2;
+  }
+
+  label[for^="PAGEBUILDER"][for*="-field-"] + div[id^="PAGEBUILDER"][id*="-field-"] {
+    div[class*="-NestedObjectLabel "] + div {
+      @apply px-1;
+    }
+  }
+}

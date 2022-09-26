@@ -4,9 +4,9 @@ import HomePage, { getStaticProps } from "~/pages";
 
 describe(HomePage.name, () => {
   it("renders", () => {
-    render(<HomePage testProp="5" />);
+    render(<HomePage entry={{ __type: "home", title: "5" }} />);
 
-    expect(screen.getByText("Home - 5")).toBeInTheDocument();
+    expect(screen.getByText("5")).toBeInTheDocument();
   });
 
   it(getStaticProps.name, async () => {

@@ -4,7 +4,7 @@ import SlugPage, { getStaticProps, getStaticPaths } from "~/pages/[slug]";
 
 describe(SlugPage.name, () => {
   it("renders", () => {
-    render(<SlugPage _slug="el-sluggo" />);
+    render(<SlugPage entry={{ __type: "pages", __slug: "" }} />);
 
     expect(screen.getByText("Slug: el-sluggo")).toBeInTheDocument();
   });
